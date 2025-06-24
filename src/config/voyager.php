@@ -1,5 +1,7 @@
 <?php
 
+use App\Admin\Widgets\CategoriesWidget as WidgetsCategoriesWidget;
+use App\Admin\Widgets\ProductsWidget as WidgetsProductsWidget;
 use Src\App\Admin\Widgets\CategoriesWidget;
 use Src\App\Admin\Widgets\ProductsWidget;
 use TCG\Voyager\Widgets\UserDimmer;
@@ -149,8 +151,8 @@ return [
 
         'widgets' => [
             UserDimmer::class,
-            // ProductsWidget::class,
-            // CategoriesWidget::class,
+            WidgetsProductsWidget::class,
+            WidgetsCategoriesWidget::class,
         ],
 
     ],

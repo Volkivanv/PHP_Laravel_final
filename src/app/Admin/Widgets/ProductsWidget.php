@@ -1,16 +1,23 @@
 <?php
 
-namespace Src\App\Admin\Widgets;
+namespace App\Admin\Widgets;
 
 use App\Models\Product;
 use Arrilot\Widgets\AbstractWidget;
 
 class ProductsWidget extends AbstractWidget
 {
+    /**
+     * Create a new class instance.
+     */
 
     protected $config = [];
+    public function __construct()
+    {
+        //
+    }
 
-    public function run()
+        public function run()
     {
         $count = Product::count();
         return view('voyager::dimmer', array_merge($this->config, [
@@ -30,5 +37,4 @@ class ProductsWidget extends AbstractWidget
     {
         return true;
     }
-
 }

@@ -1,13 +1,22 @@
 <?php
 
-namespace Src\App\Admin\Widgets;
+namespace App\Admin\Widgets;
 
 use App\Models\Category;
 use Arrilot\Widgets\AbstractWidget;
 
 class CategoriesWidget extends AbstractWidget
 {
+    /**
+     * Create a new class instance.
+     */
+
+
     protected $config = [];
+    public function __construct()
+    {
+        //
+    }
 
     public function run()
     {
