@@ -1,2 +1,29 @@
- создать контроллер
- docker-compose run artisan make:controller TestController
+## Дашборд админской панели с виджетами
+
+![admin-dashboard](image-1.png)
+
+## Левое меню панели администатора
+![left-menu](image-2.png)
+
+## страница раздела продуктов
+
+![products](image-3.png)
+
+## создание продукта
+
+![создание продукта](image-5.png)
+
+## страница одного продукта
+
+![one_product](image-4.png)
+
+## страница редактирования продукта
+
+![edit](image-6.png)
+
+## разделы категорий
+![categories](image-7.png)
+
+## Попытка создания связей между таблицами
+![Связь между таблицами](image.png)
+

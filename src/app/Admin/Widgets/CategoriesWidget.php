@@ -30,7 +30,7 @@ class CategoriesWidget extends AbstractWidget
                 'link' => '',
                 // 'link' => route('voyager.category.index'),
             ],
-            'image' => 'news-bg.png',
+            'image' => 'category-png.png',
         ]));
     }
 

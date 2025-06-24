@@ -29,7 +29,7 @@ class ProductsWidget extends AbstractWidget
                 'link' => '',
                 // 'link' => route('voyager.product.index'),
             ],
-            'image' => 'news-bg.png',
+            'image' => 'product-png.png',
         ]));
     }
 
