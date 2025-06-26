@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Dashboard;
+use App\Http\Controllers\EmployController;
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\JsonParseController;
 use App\Http\Controllers\RequestTestController;
@@ -35,3 +36,9 @@ Route::get('/upload_file', [FileUploadController::class, 'showForm'])->name('sho
 Route::post('/upload_file', [FileUploadController::class, 'fileUpload'])->name('uploadFile');
 
 Route::post('/json_parse', [JsonParseController::class, 'parseJson']);
+
+Route::get('/get-employee-data', [EmployController::class, 'index']);
+
+Route::post('/store-form', [EmployController::class, 'store']);
+
+Route::put('user/{id}', [EmployController::class, 'update']);

@@ -17,3 +17,6 @@ class JsonParseController extends Controller
         echo $request->json()->get('first_name');
     }
 }
+
+
+
