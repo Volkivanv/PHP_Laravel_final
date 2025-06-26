@@ -14,13 +14,19 @@ class FileUploadController extends Controller
 
     public function fileUpload(Request $request)
     {
-        if ($request->hasFile('upload-photo')) {
-            $file = $request->file('upload-photo');
-            echo $file->path();
-            echo $file->getClientOriginalName();
-            $file->storeAs('Images', $file->getClientOriginalName());
-        } else {
-            echo 'No file uploaded';
+        // if ($request->hasFile('upload_photo')) {
+        //     $file = $request->file('upload-photo');
+        //     echo $file->path();
+        //     echo '<br>';
+        //     echo $file->getClientOriginalName();
+        //     echo '<br>';
+        //     echo $file->getClientOriginalExtension();
+        //     $file->storeAs('Images', $file->getClientOriginalName());
+        // } else {
+        //     echo 'No file uploaded';
+        // }
+        foreach($request->upload_photo as $photo){
+            var_dump($photo);
         }
     }
 }

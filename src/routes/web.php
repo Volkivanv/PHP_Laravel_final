@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\FileUploadController;
+use App\Http\Controllers\JsonParseController;
 use App\Http\Controllers\RequestTestController;
 use App\Http\Controllers\TestCookieController;
 use App\Http\Controllers\TestHeaderController;
@@ -32,3 +33,5 @@ Route::get('/test_cookie', [TestCookieController::class, 'TestCookie']);
 Route::get('/upload_file', [FileUploadController::class, 'showForm'])->name('showForm');
 
 Route::post('/upload_file', [FileUploadController::class, 'fileUpload'])->name('uploadFile');
+
+Route::post('/json_parse', [JsonParseController::class, 'parseJson']);

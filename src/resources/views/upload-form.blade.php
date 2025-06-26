@@ -6,7 +6,9 @@
 
 <body>
     <form name="file-upload" enctype="multipart/form-data" method="post" action="{{Route('uploadFile') }}">
-        <input type="file" name="upload-photo" value="File to upload">
+        <input type="file" name="upload_photo[]" value="File to upload">
+        <input type="file" name="upload_photo[]" value="File to upload">
+        <input type="file" name="upload_photo[]" value="File to upload">
         <input type="submit" value="Send">
         @csrf
     </form>
