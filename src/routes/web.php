@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Dashboard;
+use App\Http\Controllers\RequestTestController;
 use Illuminate\Support\Facades\Route;
 use TCG\Voyager\Facades\Voyager;
 
@@ -14,3 +15,6 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 Route::get('/dashboard', Dashboard::class);
+
+
+Route::post('/test_parameters', [RequestTestController::class, 'testRequest']);
