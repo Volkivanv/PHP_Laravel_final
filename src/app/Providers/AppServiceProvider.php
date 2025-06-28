@@ -22,7 +22,10 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         VerifyCsrfToken::except([
-            '/test_parameters'
+            '/test_parameters',
+            '/json_parse',
+            '/store-form',
+            '/user/1'
         ]);
     }
 }

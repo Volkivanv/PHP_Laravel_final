@@ -1,0 +1,12 @@
+{
+    "address": {
+        "street": "Rozhdestvenskaya",
+        "suite": "APt 654",
+        "city": "Gweqw3",
+        "zipcode": "31234",
+        "geo": {
+            "lat": "-35",
+            "lng": "54"
+        }
+    }
+}
