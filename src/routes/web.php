@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\EmployController;
 use App\Http\Controllers\EmployeeController;
@@ -64,3 +65,7 @@ Route::post('/test_validation', [TestValidationController::class, 'post'])->name
 
 Route::get('/test_builder', [FormBuilderTestController::class, 'showForm'])->name('show_builder_test');
 Route::post('/test_builder', [FormBuilderTestController::class, 'post'])->name('post_builder_test');
+
+Route::get('/books', [BookController::class, 'index'])->name('show_book_form');
+Route::post('/books', [BookController::class, 'store'])->name('post_book_form');
+
