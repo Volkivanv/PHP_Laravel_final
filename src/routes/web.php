@@ -6,6 +6,7 @@ use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\JsonParseController;
 use App\Http\Controllers\RequestTestController;
 use App\Http\Controllers\TestCookieController;
+use App\Http\Controllers\TestFormController;
 use App\Http\Controllers\TestHeaderController;
 use Illuminate\Support\Facades\Route;
 use TCG\Voyager\Facades\Voyager;
@@ -42,3 +43,6 @@ Route::get('/get-employee-data', [EmployController::class, 'index']);
 Route::post('/store-form', [EmployController::class, 'store']);
 
 Route::put('user/{id}', [EmployController::class, 'update']);
+
+Route::get('/form', [TestFormController::class, 'displayForm'])->name('show_form');
+Route::post('/form', [TestFormController::class, 'postForm'])->name('post_form');
