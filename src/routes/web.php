@@ -13,6 +13,8 @@ use App\Http\Controllers\TestFormController;
 use App\Http\Controllers\TestHeaderController;
 use App\Http\Controllers\TestSecurityController;
 use App\Http\Controllers\TestValidationController;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
 use TCG\Voyager\Facades\Voyager;
 use TCG\Voyager\Models\Role;
@@ -68,4 +70,107 @@ Route::post('/test_builder', [FormBuilderTestController::class, 'post'])->name('
 
 Route::get('/books', [BookController::class, 'index'])->name('show_book_form');
 Route::post('/books', [BookController::class, 'store'])->name('post_book_form');
+
+// Route::get('/test_url', function () {
+//     $response = new Response('my content', 200);
+//     return $response;
+// });
+
+// Route::get('/test_url', function () {
+
+//     return response('New Test URL', 200)
+//         ->header('X-Header-1', 'Test')
+//         ->header('Content-Type', 'application/json');
+// });
+
+Route::get('/test_url', function () {
+
+    return redirect()->route('show_book_form');
+});
+
+// Route::get('/test_cookie', function(){
+//     return response('My first cookie')
+//     ->cookie('my_test_cookie', 'test_content', 5)
+//     ->header('Set-cookie', 'my_test_cookie2=10')
+//     ->header('X-Header-1', 'Test')
+//     ->header('X-Header-2', 'Test')
+//     ->header('X-Header-3', 'Test');
+// });
+
+Route::get('/test_cookie', function () {
+    return response('My first cookie')
+        ->cookie('my_test_cookie', 'test_content', 2)
+        ->withHeaders(
+            [
+                'Set-cookie' => 'my_test_cookie2=10',
+                'X-Header-1' => 'Test',
+                'X-Header-2' => 'Test',
+                'X-Header-3' => 'Test'
+            ]
+        )->withoutCookie('my_test_cookie2');
+});
+
+Route::get('/counter', function(){
+    $counterValue = session('counter', 0);
+    $counterValue++;
+    session(['counter' => $counterValue]);
+    return 'ok';
+});
+
+// Route::get('/result_counter', function(){
+//     return session('counter', 0);
+// });
+
+// Route::get('/result_counter', function(){
+//    var_dump(session()->all());
+// });
+
+Route::get('/result_counter', function(){
+    if(session()->has('counter'))
+    {
+        session()->forget('counter');
+    }
+
+    var_dump(session()->all());
+});
+
+Route::get('/list_of_books', function(){
+    $listOfBooks = session()->get('list_of_books', '');
+    return response()->json(['status'=>'received', 'list_of_books' => $listOfBooks ? unserialize($listOfBooks) : 'The list is empty']);
+});
+
+Route::post('/list_of_books', function(Request $request){
+    $listOfBooks = session()->get('list_of_books', '');
+    $listOfBooks = $listOfBooks ? unserialize($listOfBooks) : [];
+    $listOfBooks[] = ['author' => $request->get('author'), 'title' => $request->get('title')];
+    session()->put('list_of_books', serialize($listOfBooks));
+    return response()->json(['status'=>'saved', 'list_of_books' => $listOfBooks]);
+});
+
+Route::delete('/list_of_books/{id}', function($id){
+    $listOfBooks = session()->get('list_of_books', '');
+    $listOfBooks = $listOfBooks ? unserialize($listOfBooks) : [];
+
+    if(array_key_exists($id, $listOfBooks)){
+        unset($listOfBooks[$id]);
+    }
+
+
+    session()->put('list_of_books', serialize($listOfBooks));
+    return response()->json(['status'=>'delete', 'list_of_books' => $listOfBooks]);
+});
+
+// Route::get('/file_download', function(){
+//     return response()->download(base_path() . '/test.txt', 'my_test');
+// });
+
+// Route::get('/file_show', function(){
+//     return response()->file(base_path() . '/test.txt');
+// });
+
+Route::get('/file_download', function(){
+    return response()->streamDownload(function(){
+        echo file_get_contents('https://google.com');
+    }, 'google.html');
+});
 

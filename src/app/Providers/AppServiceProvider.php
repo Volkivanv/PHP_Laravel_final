@@ -25,7 +25,9 @@ class AppServiceProvider extends ServiceProvider
             '/test_parameters',
             '/json_parse',
             '/store-form',
-            '/user/1'
+            '/user/*',
+            '/list_of_books',
+            '/list_of_books/*'
         ]);
     }
 }
