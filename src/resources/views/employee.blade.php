@@ -1,6 +1,6 @@
 <html>
     <body>
-        <form name="employee" method="post" action="{{ Route('store_employee') }}">
+        <form name="worker" method="post" action="{{ Route('store_employee') }}">
             @csrf
             <label for="first_name">First name: </label><input type="text" name="first_name" value="@if ($employee) {{$employee->first_name}} @endif"><br>
             <label for="last_name">Last name: </label><input type="text" name="last_name" value="@if ($employee) {{$employee->last_name}} @endif"><br>

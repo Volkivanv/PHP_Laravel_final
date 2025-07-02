@@ -7,12 +7,14 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\FormBuilderTestController;
 use App\Http\Controllers\JsonParseController;
+use App\Http\Controllers\PdfGeneratorController;
 use App\Http\Controllers\RequestTestController;
 use App\Http\Controllers\TestCookieController;
 use App\Http\Controllers\TestFormController;
 use App\Http\Controllers\TestHeaderController;
 use App\Http\Controllers\TestSecurityController;
 use App\Http\Controllers\TestValidationController;
+use App\Http\Controllers\WorkerController;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
@@ -173,4 +175,11 @@ Route::get('/file_download', function(){
         echo file_get_contents('https://google.com');
     }, 'google.html');
 });
+
+
+Route::get('/worker', [WorkerController::class, 'index'])->name('show_worker_form');
+Route::get('/worker/{id}', [WorkerController::class, 'get'])->name('show_worker');
+Route::post('/store-worker', [WorkerController::class, 'store'])->name('save_worker');
+
+Route::get('/resume/{id}', [PdfGeneratorController::class, 'index'])->name('print_pdf');
 
