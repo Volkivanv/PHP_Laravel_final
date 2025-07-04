@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Services\SmsSenderInterface;
+use App\Services\SmsSenderService;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Support\ServiceProvider;
 
@@ -13,6 +15,9 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         //
+        $this->app->bind(SmsSenderInterface::class, function(){
+            return new SmsSenderService('2304820398', 'dsflasdf');
+        });
     }
 
     /**

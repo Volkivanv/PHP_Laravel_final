@@ -10,6 +10,7 @@ use App\Http\Controllers\JsonParseController;
 use App\Http\Controllers\PdfGeneratorController;
 use App\Http\Controllers\RequestTestController;
 use App\Http\Controllers\TestCookieController;
+use App\Http\Controllers\TestDiController;
 use App\Http\Controllers\TestFormController;
 use App\Http\Controllers\TestHeaderController;
 use App\Http\Controllers\TestSecurityController;
@@ -17,6 +18,7 @@ use App\Http\Controllers\TestValidationController;
 use App\Http\Controllers\WorkerController;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Mail\Mailer;
 use Illuminate\Support\Facades\Route;
 use TCG\Voyager\Facades\Voyager;
 use TCG\Voyager\Models\Role;
@@ -183,3 +185,4 @@ Route::post('/store-worker', [WorkerController::class, 'store'])->name('save_wor
 
 Route::get('/resume/{id}', [PdfGeneratorController::class, 'index'])->name('print_pdf');
 
+Route::get('/check_di', [TestDiController::class, 'showUrl']);
